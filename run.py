@@ -26,7 +26,34 @@ def clear():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
+def show_instructions():
+    """
+    Display game instructions.
+    """
+    clear()
+    print(
+        """
+-------------------------------------------------------------------------
+|  _____ _   _          _  ________    _____          __  __ ______ 
+  / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
+ | (___ |  \| |  /  \  | ' /| |__    | |  __   /  \  | \  / | |__   
+  \___ \| . ` | / /\ \ |  < |  __|   | | |_ | / /\ \ | |\/| |  __|  
+  ____) | |\  |/ ____ \| . \| |____  | |__| |/ ____ \| |  | | |____ 
+ |_____/|_| \_/_/    \_\_|\_\______|  \_____/_/    \_\_|  |_|______|   
+---------------------------------------------------------------------------
+""")
+    print("""
+             +-++-++-++-++-++-++-++-++-++-++-++-+
+             |I||N||S||T||R||U||C||T||I||O||N||S|
+             +-++-++-++-++-++-++-++-++-++-++-++-+
+""")
+    print("- Use the arrow keys to control the snake's direction.")
+    print("- Navigate the snake to eat food to grow longer.")
+    print("- Avoid collisions with the walls or the snake's own body.")
+    print("\nEnjoy playing Snake Game!")
+    input("\n Press Enter to return to the main menu...")
+    print("You entered:",input)
+    main()
 def main():
     """
     Welcome message and main menu.
