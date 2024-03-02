@@ -143,10 +143,11 @@ Choose an option below:
             elif choice == 3:
                 show_instructions()
             elif choice == 4:
-                print(Fore.GREEN +"""
+                clear()
+                print(Fore.GREEN + """
 Thank you for visiting 'Snake Game'!
-See you next time!
-""")
+\n See you next time!\n""")
+                
             input("If you have changed your mind simply click'Run Program'again.")
             break
         except ValueError:
