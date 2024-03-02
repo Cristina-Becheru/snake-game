@@ -13,11 +13,7 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('scoreboard')
-
-board = SHEET.worksheet('board')
-
-data = board.get_all_values()
+SHEET = GSPREAD_CLIENT.open('leaderboard')
 
 
 def clear():
@@ -26,13 +22,38 @@ def clear():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def get_scoreboard():
+    """
+    Retrieves scoreboard data from a Google Sheets spreadsheet.
+    """
+    scoreboard = SHEET.worksheet("leaderboard")
+    data = scoreboard.get_all_values()
+    
+    return data
+
+def show_leaderboard():
+    """
+    Displays the leaderboard fetched from Google Sheets.
+    """
+    clear()
+    scores = get_scoreboard()
+    print("Scoreboard (Top 10):")
+    if scores:
+        print("{:<10} {:<10} {:<10}".format("Rank", "Name", "Score"))
+        for idx, (rank, name, score) in enumerate(scores[:10], 1):
+            print("{:<10} {:<10} {:<10}".format(rank, name, score))
+    else:
+        print("No scores available.")
+    input("\nPress 'Enter' to return to the main menu...")
+    main() 
+         
 def show_instructions():
     """
     Display game instructions.
     """
     clear()
     print(
-        """
+    """
 -------------------------------------------------------------------------
 |  _____ _   _          _  ________    _____          __  __ ______ 
   / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
@@ -58,9 +79,9 @@ def main():
     """
     Welcome message and main menu.
     """
-    print("\nWELCOME TO...\n")
+    print("WELCOME TO...")
     print(
-        """
+    """
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
    _____ _   _          _  ________    _____          __  __ ______ 
   / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
@@ -68,12 +89,14 @@ def main():
   \___ \| . ` | / /\ \ |  < |  __|   | | |_ | / /\ \ | |\/| |  __|  
   ____) | |\  |/ ____ \| . \| |____  | |__| |/ ____ \| |  | | |____ 
  |_____/|_| \_/_/    \_\_|\_\______|  \_____/_/    \_\_|  |_|______|
+
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
-        """
+    """
     ) 
     print ("""
 Navigate a hungry snake through a maze, gobbling up food to grow longer. 
 Avoid obstacles and your own tail to survive, testing reflexes and strategic thinking in this addictive classic.
+
 Please select an option:
     1) Start
     2) Scoreboard
@@ -86,14 +109,14 @@ Please select an option:
             if choice == 1:
                 start_game()
             elif choice == 2:
-                get_scoreboard()
+                show_leaderboard()
             elif choice == 3:
                 show_instructions()
             elif choice == 4:
                 print("""
 Thank you for visiting 'Snake Game'!
 See you next time!
-If you have changed your mind, simply click 'Run Program' again.
+If you have changed your mind, simply 'Enter your selection' below.
 """)
                 break  
             else:
