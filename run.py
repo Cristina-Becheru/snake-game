@@ -124,8 +124,9 @@ def main():
     )
     )
     print ("""
-Navigate a hungry snake through a maze, gobbling up food to grow longer. 
-Avoid obstacles and your own tail to survive, testing reflexes and strategic thinking in this addictive classic.
+The exciting classic arcade game where players control a snake moving around a grid.
+The goal is to eat food pellets to grow longer while avoiding obstacles and the snake's own tail. 
+It's a simple yet addictive game that challenges players' reflexes and strategy.
 
 Choose an option below:
     1) Start
