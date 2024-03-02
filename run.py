@@ -46,6 +46,20 @@ def show_leaderboard():
         print("\033[91m No scores available.\033[0m")
     input("\nPress 'Enter' to return to the main menu...")
     main() 
+def update_score(rank, name, score):
+    """
+    Update the player's score in the Google Sheets scoreboard.
+    """
+    try:
+        sheet = GSPREAD_CLIENT.open('leaderboard')
+        scoreboard = sheet.worksheet('leaderboard')
+        # Add a new row with the player's position name and score
+        scoreboard.append_row([name, score])
+        print("Score updated successfully!")
+
+    except Exception as e:
+        print("Error occurred while updating score:", e)
+
          
 def show_instructions():
     """
