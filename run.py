@@ -98,17 +98,19 @@ def show_instructions():
 """
 )
 
-    print(Fore.YELLOW + """
+    print(Fore.YELLOW + """\033[1m
              +-++-++-++-++-++-++-++-++-++-++-++-+
              |I||N||S||T||R||U||C||T||I||O||N||S|
              +-++-++-++-++-++-++-++-++-++-++-++-+
-""")
-    print(Style.RESET_ALL +"- Use the arrow keys to control the snake's direction.")
-    print("- Navigate the snake to eat food to grow longer.")
-    print("- Avoid collisions with the walls or the snake's own body.")
-    print(Fore.GREEN + "\nEnjoy playing Snake Game!")
+\033[0m""")
+    print(Fore.GREEN + """ 
+    \033[1m
+    - Use the arrow keys to control the snake's direction.
+    - Navigate the snake to eat food to grow longer.
+    - Avoid collisions with the walls or the snake's own body.\033[0m""")
+    print(" \n Enjoy playing Snake Game!")
     
-    input(Style.RESET_ALL +"\n Press Enter to return to the main menu...")
+    input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
     print("You entered:",input)
     main()
 def main():
@@ -116,24 +118,24 @@ def main():
     Welcome message and main menu.
     """
     clear()
-    print("\n WELCOME TO...\n")
+    print("\n \033[1m WELCOME TO... \033[0m \n")
     print(
     pyfiglet.figlet_format(
        "SNAKE GAME",font="ogre",))
-    print (Fore.YELLOW +"""
+    print (Fore.YELLOW +"""\033[1m
 The exciting classic arcade game where players control a snake moving around a grid.\n
 The goal is to eat food pellets to grow longer while avoiding obstacles and the snake's own tail.\n 
-It's a simple yet addictive game that challenges players' reflexes and strategy.""")
-    print (Style.RESET_ALL +"""
+It's a simple yet addictive game that challenges players' reflexes and strategy.\033[0m""")
+    print (Style.RESET_ALL +"""\033[1m
 Choose an option below:\n
     1) Start\n
     2) Scoreboard\n
     3) Instructions\n
     4) Quit
-        """)
+        \033[0m""")
     while True:
         try:
-            choice = int(input("Enter your choice (1-4): "))
+            choice = int(input("\033[1m Enter your choice (1-4): \033[0m"))
             if choice == 1:
                 start_game()
             elif choice == 2:
