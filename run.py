@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import pyfiglet
+from colorama import Fore, Style
 import time
 import random
 import os
@@ -53,7 +55,6 @@ def update_score(name, score):
     try:
         sheet = GSPREAD_CLIENT.open('leaderboard')
         scoreboard = sheet.worksheet('leaderboard')
-        # Add a new row with the player's name and score
         scoreboard.append_row([name, score])
         print("Score updated successfully!")
 
@@ -82,37 +83,9 @@ def show_instructions():
     Display game instructions.
     """
     clear()
-    print(
-    r"""
--------------------------------------------------------------------------
-|  _____ _   _          _  ________    _____          __  __ ______ 
-  / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
- | (___ |  \| |  /  \  | ' /| |__    | |  __   /  \  | \  / | |__   
-  \___ \| . ` | / /\ \ |  < |  __|   | | |_ | / /\ \ | |\/| |  __|  
-  ____) | |\  |/ ____ \| . \| |____  | |__| |/ ____ \| |  | | |____ 
- |_____/|_| \_/_/    \_\_|\_\______|  \_____/_/    \_\_|  |_|______|   
----------------------------------------------------------------------------
-""")
-    print("""
-             +-++-++-++-++-++-++-++-++-++-++-++-+
-             |I||N||S||T||R||U||C||T||I||O||N||S|
-             +-++-++-++-++-++-++-++-++-++-++-++-+
-""")
-    print("- Use the arrow keys to control the snake's direction.")
-    print("- Navigate the snake to eat food to grow longer.")
-    print("- Avoid collisions with the walls or the snake's own body.")
-    print("\nEnjoy playing Snake Game!")
-    input("\n Press Enter to return to the main menu...")
-    print("You entered:",input)
-    main()
-def main():
-    """
-    Welcome message and main menu.
-    """
-    print("WELCOME TO...")
-    print(
 
-    r""" 
+    print(
+    "\x1b[38;5;2m" + r"""
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
    _____ _   _          _  ________    _____          __  __ ______ 
   / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
@@ -122,13 +95,39 @@ def main():
  |_____/|_| \_/_/    \_\_|\_\______|  \_____/_/    \_\_|  |_|______|
 
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
+"""
+)
+
+    print(Fore.YELLOW + """
+             +-++-++-++-++-++-++-++-++-++-++-++-+
+             |I||N||S||T||R||U||C||T||I||O||N||S|
+             +-++-++-++-++-++-++-++-++-++-++-++-+
+""")
+    print(Style.RESET_ALL +"- Use the arrow keys to control the snake's direction.")
+    print("- Navigate the snake to eat food to grow longer.")
+    print("- Avoid collisions with the walls or the snake's own body.")
+    print(Fore.GREEN + "\nEnjoy playing Snake Game!")
+    
+    input(Style.RESET_ALL +"\n Press Enter to return to the main menu...")
+    print("You entered:",input)
+    main()
+def main():
     """
-    ) 
+    Welcome message and main menu.
+    """
+    clear()
+    print("\n WELCOME TO...\n")
+    print(
+
+    pyfiglet.figlet_format(
+        "SNAKE GAME",font="ogre",
+    )
+    )
     print ("""
 Navigate a hungry snake through a maze, gobbling up food to grow longer. 
 Avoid obstacles and your own tail to survive, testing reflexes and strategic thinking in this addictive classic.
 
-Please select an option:
+Choose an option below:
     1) Start
     2) Scoreboard
     3) Instructions
@@ -136,7 +135,7 @@ Please select an option:
         """)
     while True:
         try:
-            choice = int(input("Enter your selection (1-4): "))
+            choice = int(input("Enter your choice (1-4): "))
             if choice == 1:
                 start_game()
             elif choice == 2:
@@ -144,16 +143,14 @@ Please select an option:
             elif choice == 3:
                 show_instructions()
             elif choice == 4:
-                print("""
+                print(Fore.GREEN +"""
 Thank you for visiting 'Snake Game'!
 See you next time!
-If you have changed your mind, simply 'Enter your selection' below.
 """)
-                break  
-            else:
-                raise ValueError
-        except ValueError: 
-            print("Invalid input, please enter a number between 1 and 4.")
+            input("If you have changed your mind simply click'Run Program'again.")
+            break
+        except ValueError:
+            print("Invalid entry. Please enter a number between 1 and 4.")
 
 
 if __name__ == "__main__":
