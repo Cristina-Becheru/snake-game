@@ -118,20 +118,17 @@ def main():
     clear()
     print("\n WELCOME TO...\n")
     print(
-
     pyfiglet.figlet_format(
-        "SNAKE GAME",font="ogre",
-    )
-    )
-    print ("""
-The exciting classic arcade game where players control a snake moving around a grid.
-The goal is to eat food pellets to grow longer while avoiding obstacles and the snake's own tail. 
-It's a simple yet addictive game that challenges players' reflexes and strategy.
-
-Choose an option below:
-    1) Start
-    2) Scoreboard
-    3) Instructions
+       "SNAKE GAME",font="ogre",))
+    print (Fore.YELLOW +"""
+The exciting classic arcade game where players control a snake moving around a grid.\n
+The goal is to eat food pellets to grow longer while avoiding obstacles and the snake's own tail.\n 
+It's a simple yet addictive game that challenges players' reflexes and strategy.""")
+    print (Style.RESET_ALL +"""
+Choose an option below:\n
+    1) Start\n
+    2) Scoreboard\n
+    3) Instructions\n
     4) Quit
         """)
     while True:
