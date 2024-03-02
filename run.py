@@ -33,17 +33,17 @@ def get_scoreboard():
 
 def show_leaderboard():
     """
-    Displays the leaderboard fetched from Google Sheets.
+    Displays the leaderboard from Google Sheets.
     """
     clear()
     scores = get_scoreboard()
-    print("Scoreboard (Top 10):")
+    print("\033[1m \033[4m Scoreboard (Top 10):\033[0m")
     if scores:
-        print("{:<10} {:<10} {:<10}".format("Rank", "Name", "Score"))
+        print("\033[1m{:<15}{:<15}{:<15}\033[0m".format("Rank", "Name", "Score"))
         for idx, (rank, name, score) in enumerate(scores[:10], 1):
-            print("{:<10} {:<10} {:<10}".format(rank, name, score))
+            print("{:<15} \033[32m{:<15}\033[0m \033[93m{:<15}\033[0m".format(rank, name, score))
     else:
-        print("No scores available.")
+        print("\033[91m No scores available.\033[0m")
     input("\nPress 'Enter' to return to the main menu...")
     main() 
          
