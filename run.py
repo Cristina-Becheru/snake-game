@@ -45,9 +45,10 @@ def show_leaderboard():
         for idx, (rank, name, score) in enumerate(scores[:10], 1):
             print("{:<15} \033[32m{:<15}\033[0m \033[93m{:<15}\033[0m".format(rank, name, score))
     else:
-        print("\033[91m No scores available.\033[0m")
-    input("\nPress 'Enter' to return to the main menu...")
+        print("No scores available.")
+    input(" \033[1m \nPress 'Enter' to return to the main menu...\033[0m")
     main() 
+
 def update_score(name, score):
     """
     Update the player's score in the Google Sheets scoreboard.
@@ -75,8 +76,6 @@ def is_high_score(score, leaderboard):
         return True, player_name
     else:
         return False, None
-
-
          
 def show_instructions():
     """
@@ -85,30 +84,18 @@ def show_instructions():
     clear()
 
     print(
-    "\x1b[38;5;2m" + r"""
-+-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
-   _____ _   _          _  ________    _____          __  __ ______ 
-  / ____| \ | |   /\   | |/ /  ____|  / ____|   /\   |  \/  |  ____|
- | (___ |  \| |  /  \  | ' /| |__    | |  __   /  \  | \  / | |__   
-  \___ \| . ` | / /\ \ |  < |  __|   | | |_ | / /\ \ | |\/| |  __|  
-  ____) | |\  |/ ____ \| . \| |____  | |__| |/ ____ \| |  | | |____ 
- |_____/|_| \_/_/    \_\_|\_\______|  \_____/_/    \_\_|  |_|______|
-
-+-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+
-"""
-)
-
+    pyfiglet.figlet_format(
+       "SNAKE GAME",font="eftitalic",))
     print(Fore.YELLOW + """\033[1m
              +-++-++-++-++-++-++-++-++-++-++-++-+
              |I||N||S||T||R||U||C||T||I||O||N||S|
              +-++-++-++-++-++-++-++-++-++-++-++-+
 \033[0m""")
-    print(Fore.GREEN + """ 
-    \033[1m
+    print(""" \033[1m
     - Use the arrow keys to control the snake's direction.
     - Navigate the snake to eat food to grow longer.
     - Avoid collisions with the walls or the snake's own body.\033[0m""")
-    print(" \n Enjoy playing Snake Game!")
+    print(Fore.YELLOW + "\033[1m \nEnjoy playing Snake Game!\033[0m")
     
     input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
     print("You entered:",input)
@@ -144,11 +131,11 @@ Choose an option below:\n
                 show_instructions()
             elif choice == 4:
                 clear()
-                print(Fore.GREEN + """
+                print("""\033[1m
 Thank you for visiting 'Snake Game'!
-\n See you next time!\n""")
+\n See you next time!\n \033[0m""")
                 
-            input("If you have changed your mind simply click'Run Program'again.")
+            input("\033[1m If you have changed your mind simply click'Run Program'again.\033[0m")
             break
         except ValueError:
             print("Invalid entry. Please enter a number between 1 and 4.")

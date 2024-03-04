@@ -1,32 +1,33 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## [SNAKE GAME]
+Welcome to Snake Game!
 
-Welcome,
+Experience the nostalgia of the classic snake game in this simple yet captivating terminal-based version implemented in Python. Dive into the world of retro gaming as you navigate the snake through the maze, dodging walls and avoiding collisions with your own tail. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
-
-## Reminders
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+## CONTENTS
+- [**SNAKE GAME**](#snake-game)
+    - [**CONTENTS**](#contents)
+    - [**User Experience UX**](#user-experience-ux)
+        - [**Client Goals**](#client-goals)
+        - [**Visitor Goals**](#visitor-goals)
+        - [**Features**](#features)
+    -[**Existing Features:**](#existing-features)
+        + [**Menu**:](#--home-page---)
+                + [**Start**](#start)
+                + [**Scoreboard**](#scoreboard)
+                + [**Instructions**](#instructions)
+                + [**Quit**](#quit)
+    -[**Future Implementations**](#future-implementations)
+    - [**Design**](#design)
+        - [**Flow Chart**](#flow-chart)
+    - [**Technologies Used**](#technologies-used)
+        - [**Languages, Frameworks, Libraries \& Programs Used**](#languages-frameworks-libraries--programs-used)
+        - [**Deployment**](#deployment)
+        - [**Local Development**](#local-development)
+            - [**Forking a Repository**](#forking-a-repository)
+            - [**Cloning a Repository**](#cloning-a-repository)
+    - [**Testing**](#testing)
+        - [**Validator Testing**](#validator-testing)
+        - [**Manual Testing**](#manual-testing)
+    - [**Credits**](#credits)
+        - [**Code Used**](#code-used)
+    - [**Acknowledgments**](#acknowledgments)
