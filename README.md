@@ -66,4 +66,4 @@ These menu options streamline the user experience, allowing players to quickly a
 - Introduce different levels with increasing difficulty levels and challenges to keep the gameplay engaging.
 
 ## Design
-Before initiating the coding process for this game, I designed a flowchart in Visio to ensure a clear logic path for the game.
+Before initiating the coding process, I designed a flowchart in Visio to ensure a clear logic path for the game.
