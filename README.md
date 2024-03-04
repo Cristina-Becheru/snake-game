@@ -10,13 +10,8 @@ Experience the nostalgia of the classic snake game in this simple yet captivatin
         - [New Users](#new-users)
         - [Frequent Visitors](#frequent-visitors)
     - [Features](#features)
-        -[Existing Features:](#existing-features)
-            - [Menu:](#menu)
-                   - [Start](#start)
-                   - [Scoreboard](#scoreboard)
-                   - [Instructions](#instructions)
-                   - [Quit](#quit)
-        -[Future Implementations](#future-implementations)
+        - [Existing Features:](#existing-features)
+        - [Future Implementations](#future-implementations)
     - [Design](#design)
         - [Flow Chart](#flow-chart)
     - [Technologies Used](#technologies-used)
@@ -34,7 +29,7 @@ Experience the nostalgia of the classic snake game in this simple yet captivatin
 
 
 ## User Experience (UX)
-The user experience for this project is divided into two sections.  
+The user experience for this project is divided into two sections to address varying user needs and expectations: new users and frequent visitors.
 
 #### New Users 
 As a new user:
