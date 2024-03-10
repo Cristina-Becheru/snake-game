@@ -77,7 +77,7 @@ def draw_snake():
     """
     for segment in snake:
         with term.location(segment.x, segment.y):
-            print(term.on_green(' '), end='')
+            print(term.on_yellow(' '), end='')
 
 def draw_food():
     """
@@ -86,19 +86,14 @@ def draw_food():
     with term.location(food.x, food.y):
         print(term.on_pink(' '), end='')
 
-def check_collision_with_wall():
+def check_collision():
     """
-    Check if the snake has collided with the wall.
-    """
-    head = snake[-1]
-    return head.x <= 0 or head.x >= term.width - 1 or head.y <= 0 or head.y >= term.height - 1
-
-def check_collision_with_self():
-    """
-    Check if the snake has collided with itself.
+    Check if the snake has collided with the wall or itself.
     """
     head = snake[-1]
-    return head in snake[:-1]
+    return (head.x <= 0 or head.x >= term.width - 1 or 
+            head.y <= 0 or head.y >= term.height - 1 or 
+            head in snake[:-1])
 
 def game_loop(term):
     """
@@ -131,7 +126,8 @@ def game_loop(term):
 
                 print(f"Score: {score}")
 
-                if check_collision_with_wall() or check_collision_with_self():
+                # Check for collisions
+                if check_collision():
                     print("Game Over!")
                     break
 
@@ -149,6 +145,7 @@ def game_loop(term):
 
         term.clear()
         term.move_yx(0, 0)
+
 
 
 
