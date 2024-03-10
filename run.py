@@ -77,6 +77,21 @@ def update_snake_position():
     else:
         snake.pop(0)
 
+def draw_snake():
+    """
+    Draw the snake on the terminal.
+    """
+    for segment in snake:
+        with term.location(segment.x, segment.y):
+            print(term.on_green(' '), end='')
+
+def draw_food():
+    """
+    Draw the food item on the terminal.
+    """
+    with term.location(food.x, food.y):
+        print(term.on_pink(' '), end='')
+
 def get_scoreboard():
     """
     Retrieves scoreboard data from a Google Sheets spreadsheet.
