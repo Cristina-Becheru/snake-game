@@ -1,24 +1,18 @@
 from blessed import Terminal
 from collections import namedtuple
 from random import randint
-import time
-import os
-
-# Related third-party imports
 import gspread
 from google.oauth2.service_account import Credentials
-
-# Local application imports
 import pyfiglet
 from colorama import Fore, Style
+import os
 
-
-
+# Google Sheets Setup
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -106,6 +100,58 @@ def check_collision_with_self():
     head = snake[-1]
     return head in snake[:-1]
 
+def game_loop(term):
+    """
+    Main game loop with restart feature if the snake hits the walls.
+    """
+    global base_speed, speed_increase_factor, score, direction
+
+    while True:
+        initialize_game()
+
+        with term.cbreak(), term.hidden_cursor():
+            while True:
+                speed = max(0.01, base_speed - speed_increase_factor * score)
+                key = term.inkey(timeout=speed)
+                if key.is_sequence:
+                    if key.name == "KEY_UP" and direction != Point(1, 0):
+                        direction = Point(0, -1)
+                    elif key.name == "KEY_DOWN" and direction != Point(-1, 0):
+                        direction = Point(0, 1)
+                    elif key.name == "KEY_LEFT" and direction != Point(0, 1):
+                        direction = Point(-1, 0)
+                    elif key.name == "KEY_RIGHT" and direction != Point(0, -1):
+                        direction = Point(1, 0)
+
+                update_snake_position()
+
+                print(term.home + term.clear)
+                draw_snake()
+                draw_food()
+
+                print(f"Score: {score}")
+
+                if check_collision_with_wall() or check_collision_with_self():
+                    print("Game Over!")
+                    break
+
+            while True:
+                restart = input("Do you want to restart? (yes/no): ").lower()
+                if restart == "yes":
+                    break
+                elif restart == "no":
+                    term.clear()
+                    term.move_yx(0, 0)
+                    print("Returning to main menu...")
+                    return
+                else:
+                    print("Invalid input. Please enter 'yes' or 'no'.")
+
+        term.clear()
+        term.move_yx(0, 0)
+
+
+
 def get_scoreboard():
     """
     Retrieves scoreboard data from a Google Sheets spreadsheet.
@@ -153,12 +199,12 @@ def is_high_score(score, leaderboard):
         return True
     lowest_high_score = sorted_leaderboard[-1][1]
     
-    if score > lowest_high_score:
+    if score is not None and score > lowest_high_score:
         player_name = input("Congratulations! You made it to the scoreboard! Enter your name: ")
         return True, player_name
     else:
         return False, None
-         
+
 def show_instructions():
     """
     Display game instructions.
@@ -182,6 +228,29 @@ def show_instructions():
     input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
     print("You entered:", input())
     main()
+
+def start_game():
+    """
+    Begins the snake game, evaluates the final score,
+    and provides appropriate feedback to the player.
+    """
+    final_score = game_loop(term)
+
+    leaderboard = get_scoreboard()
+    if is_high_score(final_score, leaderboard):
+        clear()
+        print("\nCongratulations! You've achieved a high score!")
+        print(f"Your final score: {final_score}")
+        player_name = input("Enter your name: ")
+        update_score(player_name, final_score)
+    else:
+        clear()
+        print("Unfortunately, you didn't reach a high score this time.")
+        print(f"Your final score: {final_score}")
+
+    input("Press Enter to return to the main menu...")
+    main()
+
 def main():
     """
     Welcome message and main menu.
@@ -221,7 +290,6 @@ Thank you for visiting 'Snake Game'!
             break
         except ValueError:
             print("Invalid entry. Please enter a number between 1 and 4.")
-
 
 if __name__ == "__main__":
     main()
