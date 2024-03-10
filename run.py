@@ -1,10 +1,18 @@
+from blessed import Terminal
+from collections import namedtuple
+from random import randint
+import time
+import os
+
+# Related third-party imports
 import gspread
 from google.oauth2.service_account import Credentials
+
+# Local application imports
 import pyfiglet
 from colorama import Fore, Style
-import time
-import random
-import os
+
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -32,7 +40,7 @@ def get_scoreboard():
     data = scoreboard.get_all_values()
     
     return data
-
+    
 def show_leaderboard():
     """
     Displays the leaderboard from Google Sheets.
@@ -98,7 +106,7 @@ def show_instructions():
     print(Fore.YELLOW + "\033[1m \nEnjoy playing Snake Game!\033[0m")
     
     input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
-    print("You entered:",input)
+    print("You entered:", input())
     main()
 def main():
     """
