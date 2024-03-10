@@ -52,6 +52,31 @@ def initialize_game():
     direction = Point(1, 0)  # Initially move to the right
     score = 0
 
+def generate_food():
+    """
+    Generate a new food item at a random location on the screen.
+    """
+    width, height = term.width - 1, term.height - 1
+    while True:
+        x, y = randint(1, width), randint(1, height)
+        new_food = Point(x, y)
+        if new_food not in snake:
+            return new_food
+
+def update_snake_position():
+    """
+    Update the snake's position based on the specified direction.
+    """
+    global snake, food, score
+    head = snake[-1]
+    next_head = Point(head.x + direction.x, head.y + direction.y)
+    snake.append(next_head)
+    if next_head == food:
+        food = generate_food()
+        score += 10
+    else:
+        snake.pop(0)
+
 def get_scoreboard():
     """
     Retrieves scoreboard data from a Google Sheets spreadsheet.
