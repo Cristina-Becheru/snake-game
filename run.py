@@ -25,12 +25,32 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('leaderboard')
 
+# Snake Game Variables
+Point = namedtuple('Point', ['x', 'y'])
+snake = []
+food = None
+direction = Point(1, 0)  # Initially move to the right
+score = 0
+base_speed = 0.1
+speed_increase_factor = 0.001
+
+term = Terminal()
 
 def clear():
     """
     Clears the terminal screen.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def initialize_game():
+    """
+    Initialize the game state.
+    """
+    global snake, food, direction, score
+    snake = [Point(6, 6), Point(6, 7), Point(6, 8), Point(6, 9)]
+    food = generate_food()
+    direction = Point(1, 0)  # Initially move to the right
+    score = 0
 
 def get_scoreboard():
     """
