@@ -240,8 +240,10 @@ def play_again():
             return True
         elif choice == 'no':
             clear()
-            print(Fore.YELLOW + "\033[1mThank you for playing!\n"
-                  "See you next time!\033[0m")
+            print(
+             pyfiglet.figlet_format("SNAKE GAME", font="bubble",))
+            print(Fore.YELLOW + "\033[1mThank you for playing!\033[0m \n")
+            print(Fore.YELLOW + "\033[1mSee you next time!\033[0m")
             exit()
 
 
