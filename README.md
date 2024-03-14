@@ -99,6 +99,54 @@ Before initiating the coding process, I designed a flowchart in Visio to ensure 
 - [Gspread]() - used for accessing Google Sheets,storing and retrieving leaderboard data.
 - [Pyfiglet]() - utilized for creating ASCII art text and for creating stylized game title.
 - [Colorama]()- utilized for adding color and style to terminal text.
+## Deployment
+This project utilizes [Heroku](http://heroku.com) , for deployment, allowing developers to build, run, and manage applications in the cloud.
+Follow these steps to deploy the Snake Game on Heroku:
+
+1. Create a New Heroku App
+- Log in to Heroku or sign up for a new account.
+- Navigate to your Heroku dashboard and click on the "New" button.
+- Select "Create new app" from the dropdown menu.
+- Choose a unique name for your app, select a region (EU or USA), and click "Create app".
+2. Configure Environment Variables
+- In your app's settings, navigate to the "Config Vars" section.
+- Click on "Reveal Config Vars" and add the following variables:
+  - PORT: Set the value to 8000.
+  - Any other confidential credentials or configuration settings required by the game.
+3. Add Buildpacks
+- In the "Buildpacks" section, add the following buildpacks in the specified order:
+  - Python
+  - Node.js
+4. Prepare Required Files
+- Ensure your project includes the following files:
+  - requirements.txt: Contains the project's Python dependencies.
+  - Procfile: Specifies the commands to run the app.
+5. Connect GitHub Repository
+
+- Under the "Deploy" tab, select "GitHub" as the deployment method.
+- Connect your GitHub repository to the Heroku app.
+- Enable automatic deploys for continuous deployment.
+6. Deploy Your App
+- Trigger a manual deployment by clicking "Deploy Branch" or wait for automatic deployments to occur.
+- Once deployed successfully, your Snake Game will be accessible via the provided Heroku URL.
+### Local Deployment
+Install Dependencies
+- Navigate to the project directory and install the required dependencies using: *pip3 install -r requirements.txt*
+#### Forking a respository
+1. Log in to GitHub and locate the repository that you want to fork.
+
+2. Click on the 'Fork' button found on the top right of the repository page.
+
+3. Select the destination where you want to fork the repository.
+
+4. After forking is complete, you'll be redirected to your forked repository.
+#### Cloning a Repository
+
+1. On the GitHub repository page, click on the "Code" button and copy the repository URL provided.
+
+2. Open your terminal and navigate to the directory where you want to clone the repository.
+
+3. Use the 'git clone' command followed by the repository URL you copied and press 'Enter'
 
 ## Testing
 
@@ -121,3 +169,4 @@ These errors were resolved by correcting the number of blank lines and removing 
 ![Validator Output](images/testerpep8.png)
 
 #### Manual Testing
+
