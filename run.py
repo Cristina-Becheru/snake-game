@@ -30,11 +30,13 @@ speed_increase_factor = 0.001
 
 term = Terminal()
 
+
 def clear():
     """
     Clears the terminal screen.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def initialize_game():
     """
@@ -46,6 +48,7 @@ def initialize_game():
     direction = Point(1, 0)  # Initially move to the right
     score = 0
 
+
 def generate_food():
     """
     Generate a new food item at a random location on the screen.
@@ -56,6 +59,7 @@ def generate_food():
         new_food = Point(x, y)
         if new_food not in snake:
             return new_food
+
 
 def update_snake_position():
     """
@@ -71,6 +75,7 @@ def update_snake_position():
     else:
         snake.pop(0)
 
+
 def draw_snake():
     """
     Draw the snake on the terminal.
@@ -79,6 +84,7 @@ def draw_snake():
         with term.location(segment.x, segment.y):
             print(term.on_yellow(' '), end='')
 
+
 def draw_food():
     """
     Draw the food item on the terminal.
@@ -86,14 +92,16 @@ def draw_food():
     with term.location(food.x, food.y):
         print(term.on_pink(' '), end='')
 
+
 def check_collision():
     """
     Check if the snake has collided with the wall or itself.
     """
     head = snake[-1]
-    return (head.x <= 0 or head.x >= term.width - 1 or 
-            head.y <= 0 or head.y >= term.height - 1 or 
+    return (head.x <= 0 or head.x >= term.width - 1 or
+            head.y <= 0 or head.y >= term.height - 1 or
             head in snake[:-1])
+
 
 def game_loop(term):
     """
@@ -147,17 +155,15 @@ def game_loop(term):
         term.move_yx(0, 0)
 
 
-
-
 def get_scoreboard():
     """
     Retrieves scoreboard data from a Google Sheets spreadsheet.
     """
     scoreboard = SHEET.worksheet("leaderboard")
     data = scoreboard.get_all_values()
-    
     return data
-    
+
+
 def show_leaderboard():
     """
     Displays the leaderboard from Google Sheets.
@@ -166,13 +172,17 @@ def show_leaderboard():
     scores = get_scoreboard()
     print("\033[1m \033[4m Scoreboard (Top 10):\033[0m")
     if scores:
-        print("\033[1m{:<15}{:<15}{:<15}\033[0m".format("Rank", "Name", "Score"))
-        for idx, (rank, name, score) in enumerate(scores[:10], 1):
-            print("{:<15} \033[32m{:<15}\033[0m \033[93m{:<15}\033[0m".format(rank, name, score))
+        print
+        ("\033[1m{:<15}{:<15}{:<15}\033[0m".format("Rank", "Name", "Score"))
+    for idx, (rank, name, score) in enumerate(scores[:10], 1):
+        print("{:<15} \033[32m{:<15}\033[0m \033[93m{:<15}\033[0m".format(rank, name, score))
+
     else:
         print("No scores available.")
     input(" \033[1m \nPress 'Enter' to return to the main menu...\033[0m")
-    main() 
+
+    main()
+
 
 def update_score(name, score):
     """
@@ -187,6 +197,7 @@ def update_score(name, score):
     except Exception as e:
         print("Error occurred while updating score:", e)
 
+
 def is_high_score(score, leaderboard):
     """
     Checks if the player's score qualifies as a high score.
@@ -195,12 +206,14 @@ def is_high_score(score, leaderboard):
     if len(sorted_leaderboard) < 10:
         return True
     lowest_high_score = sorted_leaderboard[-1][1]
-    
+
     if score is not None and score > lowest_high_score:
-        player_name = input("Congratulations! You made it to the scoreboard! Enter your name: ")
+        player_name = input
+        ("Congratulations! You made it to the scoreboard! Enter your name: ")
         return True, player_name
     else:
         return False, None
+
 
 def show_instructions():
     """
@@ -209,8 +222,9 @@ def show_instructions():
     clear()
 
     print(
-    pyfiglet.figlet_format(
-       "SNAKE GAME",font="eftitalic",))
+
+     pyfiglet.figlet_format(
+       "SNAKE GAME", font="eftitalic",))
     print(Fore.YELLOW + """\033[1m
              +-++-++-++-++-++-++-++-++-++-++-++-+
              |I||N||S||T||R||U||C||T||I||O||N||S|
@@ -221,9 +235,10 @@ def show_instructions():
     - Navigate the snake to eat food to grow longer.
     - Avoid collisions with the walls or the snake's own body.\033[0m""")
     print(Fore.YELLOW + "\033[1m \nEnjoy playing Snake Game!\033[0m")
-    
-    input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
+    input(Style.RESET_ALL + "\n \033[1m Press Enter to return to the main menu...\033[0m")
+
     main()
+
 
 def start_game():
     """
@@ -246,6 +261,7 @@ def start_game():
     input("Press Enter to return to the main menu...")
     main()
 
+
 def main():
     """
     Welcome message and main menu.
@@ -253,13 +269,11 @@ def main():
     clear()
     print("\n \033[1m WELCOME TO... \033[0m \n")
     print(
-    pyfiglet.figlet_format(
-       "SNAKE GAME",font="ogre",))
-    print (Fore.YELLOW +"""\033[1m
-The exciting classic arcade game where players control a snake moving around a grid.\n
-The goal is to eat food pellets to grow longer while avoiding obstacles and the snake's own tail.\n 
-It's a simple yet addictive game that challenges players' reflexes and strategy.\033[0m""")
-    print (Style.RESET_ALL +"""\033[1m
+     pyfiglet.figlet_format(
+       "SNAKE GAME", font="ogre",))
+    print(Fore.YELLOW + """\033[1m The exciting classic arcade game where players control a snake moving around a grid.
+    It's a simple yet addictive game that challenges players' reflexes and strategy.\033[0m""")
+    print(Style.RESET_ALL + """\033[1m
 Choose an option below:\n
     1) Start\n
     2) Scoreboard\n
@@ -277,14 +291,13 @@ Choose an option below:\n
                 show_instructions()
             elif choice == 4:
                 clear()
-                print(Fore.YELLOW +"""\033[1m
-Thank you for visiting 'Snake Game'!
-\n See you next time!\n \033[0m""")
-                
-            input(Fore.YELLOW +"\033[1m If you have changed your mind simply click'Run Program'again.\033[0m")
+            print("\033[1mThank you for visiting 'Snake Game'!\nSee you next time!\033[0m")
+            input("\033[1mIf you have changed your mind, simply click 'Run Program' again.\033[0m")
             break
         except ValueError:
-            print("Invalid entry. Please enter a number between 1 and 4.")
+            clear()
+            print("\033[91mERROR: Invalid Input! Please enter a number between 1 and 4.\033[0m")
+
 
 if __name__ == "__main__":
     main()
