@@ -25,7 +25,6 @@ Experience the nostalgia of the classic snake game in this simple yet captivatin
         - [*Validator Testing*](#validator-testing)
         - [*Manual Testing*](#manual-testing)
     - [*Credits*](#credits)
-        - [*Code Used*](#code-used)
     - [*Acknowledgments*](#acknowledgments)
 
 
@@ -169,4 +168,20 @@ These errors were resolved by correcting the number of blank lines and removing 
 ![Validator Output](images/testerpep8.png)
 
 #### Manual Testing
+## Credits
+### Code
+- [W3Schools](https://www.w3schools.com/) - Was a valuable resource in understanding Python.
+- [Stack Overflow](https://stackoverflow.com/) - Provided answers to many questions I had about Python syntax.
+- [ANSI Colors](https://talyian.github.io/ansicolors/) - The colors used were inspired by the ANSI Colors library, which provides a convenient way to add colors and styling to terminal output in Python.
+- [Slack Community](https://app.slack.com/) - Special 'thanks' to the Slack Community for providing valuable advice and support throughout the development process.
+- [Medium - Step-by-Step Guide: Python Code for Snake Game Development](https://medium.com/@wepypixel/step-by-step-guide-python-code-for-snake-game-development-3e0ec9f7522e): The step-by-step guide provided on this website served as valuable inspiration.
+
+### Acknowledgements
+
+- [Code Institute](https://learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum): The Code Institute's educational materials and Python lessons were immensely helpful in guiding the development and deployment of the game.
+- [Slack Community](https://app.slack.com/): Special thanks to the Slack Community for providing valuable advice and support throughout the development process.
+
+
+
+
 
