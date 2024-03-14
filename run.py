@@ -242,15 +242,14 @@ def play_again():
             clear()
             print(Fore.YELLOW + "\033[1mThank you for playing!\n"
                   "See you next time!\033[0m")
-            quit()
+            exit()
 
 
 def main():
     """
-    Welcome message and main menu.
+    Describing message and main menu.
     """
     clear()
-    print("\n \033[1m WELCOME TO... \033[0m \n")
     print(
         pyfiglet.figlet_format(
             "SNAKE GAME", font="ogre",))
