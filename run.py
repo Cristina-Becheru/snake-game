@@ -223,7 +223,6 @@ def show_instructions():
     print(Fore.YELLOW + "\033[1m \nEnjoy playing Snake Game!\033[0m")
     
     input(Style.RESET_ALL +"\n \033[1m Press Enter to return to the main menu...\033[0m")
-    print("You entered:", input())
     main()
 
 def start_game():

@@ -67,3 +67,4 @@ These menu options streamline the user experience, allowing players to quickly a
 
 ## Design
 Before initiating the coding process, I designed a flowchart in Visio to ensure a clear logic path for the game.
+![Snake Game Flowchart](images/flowchart.png)
