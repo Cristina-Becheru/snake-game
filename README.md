@@ -99,3 +99,25 @@ Before initiating the coding process, I designed a flowchart in Visio to ensure 
 - [Gspread]() - used for accessing Google Sheets,storing and retrieving leaderboard data.
 - [Pyfiglet]() - utilized for creating ASCII art text and for creating stylized game title.
 - [Colorama]()- utilized for adding color and style to terminal text.
+
+## Testing
+
+#### Validator Testing
+The [PEP8 Linter Validator](https://pep8ci.herokuapp.com/) returned the following errors:
+
+- 33: E302 expected 2 blank lines, found 1
+- 39: E302 expected 2 blank lines, found 1
+- 49: E302 expected 2 blank lines, found 1
+- 60: E302 expected 2 blank lines, found 1
+- 74: E302 expected 2 blank lines, found 1
+- 82: E302 expected 2 blank lines, found 1
+- 89: E302 expected 2 blank lines, found 1
+- 94: W291 trailing whitespace
+- 95: W291 trailing whitespace
+- 98: E302 expected 2 blank lines, found 1
+- 149: E305 expected 2 blank lines after class or function definition, found 1
+
+These errors were resolved by correcting the number of blank lines and removing trailing whitespace. After the fixes, the validator reported no errors.
+![Validator Output](images/testerpep8.png)
+
+#### Manual Testing
