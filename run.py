@@ -151,7 +151,7 @@ def get_scoreboard():
     """
     scoreboard = SHEET.worksheet("leaderboard")
     data = scoreboard.get_all_values()
-    
+
     return data
 
 
@@ -186,7 +186,6 @@ def update_score(name, score):
 
     except Exception as e:
         print("Error occurred while updating score:", e)
-
 
 
 def is_high_score(score, leaderboard):
@@ -287,6 +286,7 @@ Choose an option below:\n
         except ValueError:
             print("ERROR: Invalid Input! "
                   "Please enter a number between 1 and 4.")
+
 
 if __name__ == "__main__":
     main()
