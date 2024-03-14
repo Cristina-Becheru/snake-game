@@ -234,7 +234,6 @@ def start_game():
 
     leaderboard = get_scoreboard()
     if is_high_score(final_score, leaderboard):
-        clear()
         print("\nCongratulations! You've achieved a high score!")
         print(f"Your final score: {final_score}")
         player_name = input("Enter your name: ")
@@ -278,11 +277,11 @@ Choose an option below:\n
                 show_instructions()
             elif choice == 4:
                 clear()
-                print("""\033[1m
+                print(Fore.YELLOW +"""\033[1m
 Thank you for visiting 'Snake Game'!
 \n See you next time!\n \033[0m""")
                 
-            input("\033[1m If you have changed your mind simply click'Run Program'again.\033[0m")
+            input(Fore.YELLOW +"\033[1m If you have changed your mind simply click'Run Program'again.\033[0m")
             break
         except ValueError:
             print("Invalid entry. Please enter a number between 1 and 4.")
