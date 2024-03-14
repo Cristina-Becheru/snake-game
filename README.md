@@ -166,7 +166,7 @@ These errors were resolved by correcting the number of blank lines and removing 
 
 ## Credits
 ### Code
-- [Code Institute Submissions](https://github.com/Code-Institute-Submissions/snake-game-8) - The 'Snake Game' project was inspired by the work submitted by a student from Code Institute. His project served as a valuable reference for understanding various approaches to implementing game mechanics and features.
+- [Code Institute Submissions](https://github.com/Code-Institute-Submissions/snake-game-8) - Based on a Code Institute student's project, the 'Snake Game' has been customized to meet specific requirements while drawing inspiration from their work. Their project provided valuable insights into implementing game mechanics.
 - [W3Schools](https://www.w3schools.com/) - Was a valuable resource in understanding Python.
 - [Stack Overflow](https://stackoverflow.com/) - Provided answers to many questions I had about Python syntax.
 - [ANSI Colors](https://talyian.github.io/ansicolors/) - The colors used were inspired by the ANSI Colors library, which provides a convenient way to add colors and styling to terminal output in Python.
